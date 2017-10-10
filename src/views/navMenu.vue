@@ -1,47 +1,27 @@
 <template>
     <div class="navMenuBox">
-		<!-- <Menu mode="horizontal" theme="light" active-name="home">
-            <div v-for="menuItem in menuListArr">
-                <MenuItem :name="menuItem.name" v-if="!menuItem.isSubmenu">
+        <Dropdown type="primary" class="dropDown" v-for="menuItem in menuListArr">
+            <a href="javascript:void(0)">
+                <Button type="primary">
                     {{menuItem.title}}
-                </MenuItem>
-                <Submenu :name="menuItem.name" v-else="!menuItem.isSubmenu">
-                    <template slot="title">
-                        {{menuItem.title}}
-                    </template>
-                    <div v-for="submenuItem in menuItem.submenuListArr">
-                        <MenuItem :name="submenuItem.name">
-                            {{submenuItem.title}}
-                        </MenuItem>       
-                    </div>
-                </Submenu>  
-            </div>
-        </Menu> -->
-        <div v-for="menuItem in menuListArr" class="menuItemBox">
-            <Dropdown v-if="!menuItem.isSubmenu">
-                <a href="javascript:void(0)">
-                    {{menuItem.title}}
-                </a>
-            </Dropdown>
-            <Dropdown v-else="!menuItem.isSubmenu">
-                <a href="javascript:void(0)">
-                    {{menuItem.title}}
-                    <Icon type="ios-arrow-down"></Icon>
-                </a>
-                <DropdownMenu slot="list" v-for="submenuItem in menuItem.submenuListArr">
+                    <Icon type="ios-arrow-down" v-if="menuItem.isSubmenu"></Icon>
+                </Button>
+            </a>
+            <DropdownMenu slot="list" v-if="menuItem.isSubmenu">
+                <div v-for="submenuItem in menuItem.submenuListArr">
                     <DropdownItem v-if="!submenuItem.isSubmenu">{{submenuItem.title}}</DropdownItem>
-                    <Dropdown v-else="!submenuItem.isSubmenu">
-                        <a href="javascript:void(0)">
+                    <Dropdown placement="right-start" class="dropDown" v-if="submenuItem.isSubmenu">
+                        <DropdownItem>
                             {{submenuItem.title}}
-                            <Icon type="ios-arrow-right"></Icon>
-                        </a>
-                        <DropdownMenu slot="list" v-for="ssubmenuItem in submenuItem.submenuListArr">
-                            <DropdownItem v-if="!menuItem.isSubmenu">{{ssubmenuItem.title}}</DropdownItem>
-                        </DropdownMenu>       
-                    </Dropdown>
-                </DropdownMenu>       
-            </Dropdown>
-        </div>
+                        <Icon type="ios-arrow-right"></Icon>
+                        </DropdownItem>
+                        <DropdownMenu slot="list">
+                            <DropdownItem v-for="ssubmenuItem in submenuItem.submenuListArr">{{ssubmenuItem.title}}</DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown> 
+                </div>
+            </DropdownMenu>
+        </Dropdown>
     </div>	
 </template>
 <script>
@@ -75,9 +55,13 @@
     };
 </script>
 <style scoped>
-    .menuItemBox{
+    .navMenuBox{
+        margin-top: 2%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
+    }
+    .dropDown{
+        margin-left: 2%;
     }
 </style>
