@@ -56,12 +56,14 @@
 </script>
 <style scoped>
     .navMenuBox{
-        margin-top: 2%;
+        margin: 2% 2%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        border-bottom: 1px #ccc solid;
     }
     .dropDown{
         margin-left: 2%;
+        margin-bottom: 1%;
     }
 </style>
