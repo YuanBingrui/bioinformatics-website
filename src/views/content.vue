@@ -2,14 +2,8 @@
     <div class="content">
         <div class="contentLeft">
             <Carousel autoplay v-model="index">
-                <CarouselItem>
-                    <img src="../assets/slide01.jpg">
-                </CarouselItem>
-                <CarouselItem>
-                    <img src="../assets/slide02.jpg">
-                </CarouselItem>
-                <CarouselItem>
-                    <img src="../assets/slide03.jpg">
+                <CarouselItem v-for=" oneImg in slideImgArr">
+                    <img :src="oneImg.src">
                 </CarouselItem>
             </Carousel>
         </div>
@@ -17,15 +11,15 @@
             <Card class="cardBox">
                 <p slot="title">
                 <Icon type="ios-bookmarks"></Icon>
-                新闻播报
+                {{newsTitle}}
                 </p>
                 <a href="#" slot="extra">
-                更多
+                {{newsBtn}}
                 <Icon type="ios-arrow-right"></Icon>
                 </a>
                 <ul>
                     <li v-for="item in list">
-                        <a :href="item.url" target="_blank">{{ item.name }}</a>
+                        <a :href="item.href" target="_blank">{{ item.name }}</a>
                     </li>
                 </ul>
             </Card>
@@ -38,12 +32,16 @@
             return {
                 value1: '1',
                 index: 0,
-                list: [{src: '#', name: '生物信息学发发生大事啦！'},
-                    {src: '#', name: '生物信息学发发生大事啦！'},
-                    {src: '#', name: '生物信息学发发生大事啦！'},
-                    {src: '#', name: '生物信息学发发生大事啦！'},
-                    {src: '#', name: '生物信息学发发生大事啦！'}],
-                slideImgArr: [{src: '../assets/slide01.jpg',name: 'slide01.jpg'}, {src: '../assets/slide01.jpg', name: 'slide02.jpg'}, {src: '../assets/slide01.jpg', name: 'slide03.jpg'}]
+                list: [ {href: '#', name: '生物信息学发发生大事啦！'},
+                        {href: '#', name: '生物信息学发发生大事啦！'},
+                        {href: '#', name: '生物信息学发发生大事啦！'},
+                        {href: '#', name: '生物信息学发发生大事啦！'},
+                        {href: '#', name: '生物信息学发发生大事啦！'}],
+                slideImgArr:[{src: require('../assets/slide01.jpg'),name: 'slide01.jpg'},
+                            {src: require('../assets/slide02.jpg'), name: 'slide02.jpg'},
+                            {src: require('../assets/slide03.jpg'), name: 'slide03.jpg'}],
+                newsTitle: '新闻播报',
+                newsBtn: '更多'
             }
         },
         methods: {

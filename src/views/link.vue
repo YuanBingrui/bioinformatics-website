@@ -1,33 +1,32 @@
 <template>
     <div class="linkBox">
         <div class="linkLeftBox linkborder linksize">
-            
+            <div v-for="onelinkImg in linkImgArr" class="linkImgBox">
+                <img :src="onelinkImg.src">
+            </div>
         </div>
         <div class="linkMiddleBox linksize">
-            
+            <div v-for="onelinkImg in linkImgArr" class="linkImgBox">
+                <img :src="onelinkImg.src">
+            </div>
         </div>
         <div class="linkRightBox linkborder linksize">
-            <Row type="flex" justify="space-around">
-                <Col span="6" class="colmargin">
-                    <img src="../assets/ncbi.png">
-                </Col>
-                <Col span="6" class="colmargin">
-                    <img src="../assets/ebi.png">
-                </Col>
-            </Row>
-            <Row type="flex" justify="space-around">
-                <Col span="6" class="colmargin">
-                    <img src="../assets/kegg.png">
-                </Col>
-                <Col span="6" class="colmargin">
-                    <img src="../assets/uniprot.png">
-                </Col>
-            </Row>
+            <div v-for="onelinkImg in linkImgArr" class="linkImgBox">
+                <img :src="onelinkImg.src">
+            </div>
         </div>
     </div>
 </template>
 <script>
     export default {
+        data() {
+            return {
+                linkImgArr: [{src: require('../assets/ncbi.png'), name: 'ncbi'},
+                            {src: require('../assets/ebi.png'), name: 'ebi'},
+                            {src: require('../assets/kegg.png'), name: 'kegg'},
+                            {src: require('../assets/uniprot.png'), name: 'uniprot'}]
+            }
+        },
         methods: {
             handleStart() {}
         }
@@ -38,27 +37,26 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        padding: 1% 5% 0 5%;
-        height: 100px;
+        padding: 1% 5% 1% 5%;
     }
     .linkBox img{
         width: 75px;
         height: 25px;
     }
     .linkborder{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border-left: 1px #336699 solid;
-        border-right: 1px #336699 solid;
+        border-left: 0.5px #336699 solid;
+        border-right: 0.5px #336699 solid;
     }
     .linksize{
         width: 30%;
-        height: 100px;
+        padding: 2.5% 4%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-content: space-around;
     }
-    .colmargin{
-        margin: 10px 15px;
+    .linkImgBox{
+        padding: 1% 2%;
     }
     .linkLeftBox{
         

@@ -6,8 +6,10 @@
 </template>
 <script>
     export default {
-        methods: {
-            handleStart() {}
+        data() {
+            return {
+                copyrightInfo: ''
+            }
         }
     };
 </script>
