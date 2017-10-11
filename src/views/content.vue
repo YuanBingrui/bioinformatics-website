@@ -2,7 +2,7 @@
     <div class="content">
         <div class="contentLeft">
             <Carousel autoplay v-model="index">
-                <CarouselItem v-for=" oneImg in slideImgArr">
+                <CarouselItem v-for=" oneImg in slideImgArr" :key="oneImg.name">
                     <img :src="oneImg.src">
                 </CarouselItem>
             </Carousel>
@@ -19,7 +19,7 @@
                 </a>
                 <ul>
                     <li v-for="item in list">
-                        <a :href="item.href" target="_blank">{{ item.name }}</a>
+                        <a :href="item.href">{{ item.name }}</a>
                     </li>
                 </ul>
             </Card>
@@ -27,22 +27,26 @@
     </div>
 </template>
 <script>
+    import parameterService from '../libs/parameterService';
     export default {
         data() {
             return {
                 value1: '1',
                 index: 0,
-                list: [ {href: '#', name: '生物信息学发发生大事啦！'},
-                        {href: '#', name: '生物信息学发发生大事啦！'},
-                        {href: '#', name: '生物信息学发发生大事啦！'},
-                        {href: '#', name: '生物信息学发发生大事啦！'},
-                        {href: '#', name: '生物信息学发发生大事啦！'}],
-                slideImgArr:[{src: require('../assets/slide01.jpg'),name: 'slide01.jpg'},
-                            {src: require('../assets/slide02.jpg'), name: 'slide02.jpg'},
-                            {src: require('../assets/slide03.jpg'), name: 'slide03.jpg'}],
+                list: [],
+                slideImgArr:[],
                 newsTitle: '新闻播报',
                 newsBtn: '更多'
             }
+        },
+        created: function(){
+            parameterService.getContentParameter().then((data) => {
+                console.log(data);
+                this.list = data.list;
+                this.slideImgArr = data.slideImgArr;
+            }).catch((error) => {
+                console.log(error);
+            });
         },
         methods: {
             handleStart() {}

@@ -1,0 +1,136 @@
+{
+  "data": [
+    {
+      "name": "home", 
+      "title": "首页",
+      "isSubmenu": false
+    },
+    {
+      "name": "menu01", 
+      "title": "Menu01", 
+      "isSubmenu": true,
+      "submenuListArr": [
+        {
+          "name": "menu01-01",
+          "title": "Menu01-01",
+          "isSubmenu": false
+        },
+        {
+          "name": "menu01-02",
+          "title": "Menu01-02",
+          "isSubmenu": true,
+          "submenuListArr": [
+            {
+              "name": "menu01-02-01",
+              "title": "Menu01-02-01"
+            },
+            {
+              "name": "menu01-02-02",
+              "title": "Menu01-02-02"
+            },
+            {
+              "name": "menu01-02-03",
+              "title": "Menu01-02-03"
+            }
+          ]
+        },
+        {
+          "name": "menu01-03",
+          "title": "Menu01-03",
+          "isSubmenu": false
+        },
+        {
+          "name": "menu01-04",
+          "title": "Menu01-04",
+          "isSubmenu": false
+        },
+        {
+          "name": "menu01-05",
+          "title": "Menu01-05",
+          "isSubmenu": false
+        }
+      ]
+    },
+    {
+    "name": "menu02",
+    "title": "Menu02",
+    "isSubmenu": false
+    },
+    {
+      "name": "menu03",
+      "title": "Menu03",
+      "isSubmenu": false
+    },
+    {
+      "name": "menu04",
+      "title": "Menu04",
+      "isSubmenu": true,
+      "submenuListArr": [
+        {
+          "name": "menu04-01",
+          "title": "Menu04-01",
+          "isSubmenu": false
+        },
+        {
+          "name": "menu04-02",
+          "title": "Menu04-02",
+          "isSubmenu": false
+        },
+        {
+          "name": "menu04-03",
+          "title": "Menu04-03",
+          "isSubmenu": false
+        }
+      ]
+    },
+    {
+      "name": "menu05",
+      "title": "Menu05",
+      "isSubmenu": false
+    },
+    {
+      "name": "menu06",
+      "title": "Menu06",
+      "isSubmenu": true,
+      "submenuListArr": [
+        {
+          "name": "menu06-01",
+          "title": "Menu06-01",
+          "isSubmenu": false
+        },
+        {
+          "name": "menu06-02",
+          "title": "Menu06-02",
+          "isSubmenu": true,
+          "submenuListArr": [
+            {
+              "name": "menu06-01",
+              "title": "Menu06-01",
+              "isSubmenu": false
+            },
+            {
+              "name": "menu06-01",
+              "title": "Menu06-01",
+              "isSubmenu": false
+            },
+            {
+              "name": "menu06-01",
+              "title": "Menu06-01",
+              "isSubmenu": false
+            }
+          ]
+        },
+        {
+          "name": "menu06-03",
+          "title": "Menu06-03",
+          "isSubmenu": false
+        }
+      ]
+    },
+    {
+      "name": "menu07",
+      "title": "Menu07",
+      "isSubmenu": false
+    }
+  ]
+}

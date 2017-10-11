@@ -10,10 +10,10 @@ util.title = function(title) {
 };
 
 const ajaxUrl = env === 'development' ?
-    'http://127.0.0.1:80' :
+    'http://127.0.0.1:80/vueDatabase' :
     env === 'production' ?
-    'https://www.url.com' :
-    'https://debug.url.com';
+    'http://127.0.0.1:80/vueDatabase' :
+    'http://127.0.0.1:80/vueDatabase';
 
 util.ajax = axios.create({
     baseURL: ajaxUrl,

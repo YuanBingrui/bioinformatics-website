@@ -1,0 +1,24 @@
+{
+  "linkImgArr": [
+    { 
+      "href": "#",
+      "src": "http://127.0.0.1:80/vueDatabase/images/ncbi.png",
+      "name": "ncbi"
+    },
+    {
+      "href": "#",
+      "src": "http://127.0.0.1:80/vueDatabase/images/ebi.png",
+      "name": "ebi"
+    },
+    {
+      "href": "#",
+      "src": "http://127.0.0.1:80/vueDatabase/images/kegg.png",
+      "name": "kegg"
+    },
+    {
+      "href": "#",
+      "src": "http://127.0.0.1:80/vueDatabase/images/uniprot.png",
+      "name": "uniprot"
+    }
+  ]
+}

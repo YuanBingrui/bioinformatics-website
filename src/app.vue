@@ -1,8 +1,13 @@
 <template>
     <div>
-        <router-view></router-view>
+        <index-component></index-component>
     </div>
 </template>
 <script>
-    export default {};
+    import Index from './views/index';
+    export default {
+      components: {
+        'index-component': Index
+      },
+    };
 </script>

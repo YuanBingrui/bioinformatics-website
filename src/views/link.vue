@@ -2,30 +2,36 @@
     <div class="linkBox">
         <div class="linkLeftBox linkborder linksize">
             <div v-for="onelinkImg in linkImgArr" class="linkImgBox">
-                <img :src="onelinkImg.src">
+                <a :href="onelinkImg.href"><img :src="onelinkImg.src"></a>
             </div>
         </div>
         <div class="linkMiddleBox linksize">
             <div v-for="onelinkImg in linkImgArr" class="linkImgBox">
-                <img :src="onelinkImg.src">
+                <a :href="onelinkImg.href"><img :src="onelinkImg.src"></a>
             </div>
         </div>
         <div class="linkRightBox linkborder linksize">
             <div v-for="onelinkImg in linkImgArr" class="linkImgBox">
-                <img :src="onelinkImg.src">
+                <a :href="onelinkImg.href"><img :src="onelinkImg.src"></a>
             </div>
         </div>
     </div>
 </template>
 <script>
+    import parameterService from '../libs/parameterService';
     export default {
         data() {
             return {
-                linkImgArr: [{src: require('../assets/ncbi.png'), name: 'ncbi'},
-                            {src: require('../assets/ebi.png'), name: 'ebi'},
-                            {src: require('../assets/kegg.png'), name: 'kegg'},
-                            {src: require('../assets/uniprot.png'), name: 'uniprot'}]
+                linkImgArr: []
             }
+        },
+        created: function(){
+            parameterService.getLinkParameter().then((data) => {
+                console.log(data);
+                this.linkImgArr = data.linkImgArr;
+            }).catch((error) => {
+                console.log(error);
+            });
         },
         methods: {
             handleStart() {}

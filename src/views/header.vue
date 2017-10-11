@@ -5,20 +5,32 @@
         </div>
         <div class="headerBottom">
             <div class="leftBox">
-                <img :src="logoUrl">
+                <a :href="href"><img :src="logoUrl"></a>
             </div>
             <div class="rightBox">{{introWord}}</div>
         </div>
     </div>
 </template>
 <script>
+    import parameterService from '../libs/parameterService';
     export default {
         data () {
             return {
                 language: '中文',
-                logoUrl: require('../assets/logo.png'),
-                introWord: '生物信息学(Bioinformatics)是研究生物信息的采集、处理、存储、传播，分析和解释等各方面的学科，也是随着生命科学和计算机科学的迅猛发展，生命科学和计算机科学相结合形成的一门新学科。'
+                logoUrl: '',
+                introWord: '',
+                href: ''
             }
+        },
+        created: function(){
+            parameterService.getHeaderParameter().then((data) => {
+                console.log(data);
+                this.href = data.href;
+                this.logoUrl = data.logoUrl;
+                this.introWord = data.introWord;
+            }).catch((error) => {
+                console.log(error);
+            });
         },
         methods: {
             switchLanguage() {

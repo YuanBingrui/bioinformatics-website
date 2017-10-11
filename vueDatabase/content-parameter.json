@@ -1,0 +1,38 @@
+{
+  "list": [
+    {
+      "href": "#", 
+      "name": "生物信息学发发生大事啦！"
+    },
+    {
+      "href": "#", 
+      "name": "生物信息学发发生大事啦！"
+    },
+    {
+      "href": "#", 
+      "name": "生物信息学发发生大事啦！"
+    },
+    {
+      "href": "#", 
+      "name": "生物信息学发发生大事啦！"
+    },
+    {
+      "href": "#", 
+      "name": "生物信息学发发生大事啦！"
+    }
+  ],
+  "slideImgArr": [
+    {
+      "src": "http://127.0.0.1:80/vueDatabase/images/slide01.jpg",
+      "name": "slide01"
+    },
+    {
+      "src": "http://127.0.0.1:80/vueDatabase/images/slide02.jpg",
+      "name": "slide02"
+    },
+    {
+      "src": "http://127.0.0.1:80/vueDatabase/images/slide03.jpg",
+      "name": "slide03"
+    }
+  ]
+}
