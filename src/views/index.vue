@@ -13,6 +13,7 @@
     import Content from './content';
     import Link from './link';
     import Footer from './footer';
+    import parameterService from '../libs/parameterService';
     export default {
         components: {
             'header-component': Header,
@@ -20,6 +21,13 @@
             'content-component': Content,
             'link-component': Link,
             'footer-component': Footer
+        },
+        created: function(){
+            parameterService.getHeaderParameter().then((data) => {
+                console.log(data);
+            }).catch((error) => {
+                console.log(error);
+            });
         },
         methods: {
             handleStart() {}
