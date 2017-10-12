@@ -1,19 +1,19 @@
 <template>
     <div class="navMenuBox">
-        <Dropdown type="primary" class="dropDown" v-for="menuItem in menuListArr" :key="menuItem.name">
-            <a href="javascript:void(0)">
-                <Button type="primary">
-                    {{menuItem.title}}
-                    <Icon type="ios-arrow-down" v-if="menuItem.isSubmenu"></Icon>
-                </Button>
-            </a>
+        <Dropdown type="primary" class="dropDown" v-for="menuItem in menuListArr" :key="menuItem.name" @on-click="selectedMenu">
+            <Button type="primary" @click="selectedMenu">
+                {{menuItem.title}}
+                <Icon type="ios-arrow-down" v-if="menuItem.isSubmenu"></Icon>
+            </Button>
             <DropdownMenu slot="list" v-if="menuItem.isSubmenu">
                 <div v-for="submenuItem in menuItem.submenuListArr" :key="submenuItem.name">
                     <DropdownItem v-if="!submenuItem.isSubmenu">{{submenuItem.title}}</DropdownItem>
                     <Dropdown placement="right-start" class="dropDown" v-if="submenuItem.isSubmenu">
                         <DropdownItem>
-                            {{submenuItem.title}}
-                        <Icon type="ios-arrow-right"></Icon>
+                            <span @click="selectedMenu">
+                                {{submenuItem.title}}
+                                <Icon type="ios-arrow-right"></Icon>
+                            </span>
                         </DropdownItem>
                         <DropdownMenu slot="list">
                             <DropdownItem v-for="ssubmenuItem in submenuItem.submenuListArr" :key="ssubmenuItem.name">{{ssubmenuItem.title}}</DropdownItem>
@@ -26,6 +26,8 @@
 </template>
 <script>
     import parameterService from '../libs/parameterService';
+    import Content from './content';
+    import SecondaryPage from './secondarypage';
     export default {
     	data () {
     		return {
@@ -34,15 +36,22 @@
   		},
         created: function(){
             parameterService.getMenuParameter().then((data) => {
-                console.log(data);
                 this.menuListArr = data.data;
             }).catch((error) => {
-                console.log(error);
+                this.$Modal.error({
+                    content: error
+                });
             });
         },
         methods: {
-        	switchLanguage() {
-        		
+        	selectedMenu() {
+                if(event.target.innerText === '首页'){
+                    this.$emit('update:currentView', Content);
+                }else{
+                    this.$emit('update:currentView', SecondaryPage);
+                }
+                //this.$emit('update:currentView', SecondaryPage);
+        		//console.log(event.target.innerText);
         	}
         }
     };
