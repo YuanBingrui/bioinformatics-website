@@ -5,7 +5,7 @@
         </div>
         <div class="headerBottom">
             <div class="leftBox">
-                <a :href="href"><img :src="logoUrl"></a>
+                <a href="/"><img :src="logoUrl"></a>
             </div>
             <div class="rightBox">{{introWord}}</div>
         </div>
@@ -18,8 +18,7 @@
             return {
                 language: '中文',
                 logoUrl: '',
-                introWord: '',
-                href: ''
+                introWord: ''
             }
         },
         created: function(){

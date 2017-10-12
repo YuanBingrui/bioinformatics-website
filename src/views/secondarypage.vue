@@ -34,7 +34,6 @@
         margin: 2% 2%;
         padding-bottom: 2%;
         border-bottom: 1px #ccc solid;
-        min-height: 800px;
     }
     .breadcrumbBox{
         padding-left: 1%;
@@ -42,11 +41,13 @@
     .contentBox{
         display: flex;
         flex-direction: row;
+        min-height: 800px;
     }
     .contentLeft{
-        width: 20%;
+        width: 200px;
         border-right: 1px #ccc solid;
-        padding-left: 1%;
+        min-height: 800px;
+        background-color: #eef1f6;
     }
     .contentRight{
         width: 75%;

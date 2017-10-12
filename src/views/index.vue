@@ -5,8 +5,6 @@
         <keep-alive>
             <component :is="currentView"></component>
         </keep-alive>
-        <!-- <content-component></content-component> -->
-        <!-- <secondarypage-component></secondarypage-component> -->
         <link-component></link-component>
         <footer-component></footer-component>
     </div>
@@ -27,8 +25,6 @@
         components: {
             'header-component': Header,
             'navMenu-component': NavMenu,
-            //'content-component': Content,
-            //'secondarypage-component': SecondaryPage,
             'link-component': Link,
             'footer-component': Footer
         },

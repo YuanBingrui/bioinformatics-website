@@ -2,7 +2,7 @@
     <div class="treemenuBox">
     	 <el-menu default-active="1" @select="handleOpen" theme="light">
     	 	<div v-for="onemenu in baseData">
-    	 		<tree-menu :onemenu="onemenu"></tree-menu>	
+    	 		<tree-menu :onemenu="onemenu" :key="onemenu.index"></tree-menu>	
     	 	</div>
     	</el-menu>
     </div>
@@ -10,7 +10,7 @@
 <script>
 	import Vue from 'vue';
 	Vue.component('tree-menu', {
-  		template: '<div><el-menu-item :index="onemenu.index" v-if="!onemenu.children">{{onemenu.title}}</el-menu-item><el-submenu :index="onemenu.index" v-if="onemenu.children"><template slot="title">{{onemenu.title}}</template><tree-menu v-for="onemenu in onemenu.children" :onemenu="onemenu"></tree-menu></el-submenu></div>',
+  		template: '<div><el-menu-item :index="onemenu.index" v-if="!onemenu.children">{{onemenu.title}}</el-menu-item><el-submenu :index="onemenu.index" v-if="onemenu.children"><template slot="title">{{onemenu.title}}</template><tree-menu v-for="onemenu in onemenu.children" :onemenu="onemenu" :key="onemenu.index"></tree-menu></el-submenu></div>',
   		props: ['onemenu']
 	})
     export default {  	
@@ -77,8 +77,5 @@
 <style scoped>
    	.treemenuBox{
 
-   	}
-   	/*.treemenuBox ul{
-   		width: 100% !important;	
-   	}*/
+    }
 </style>
