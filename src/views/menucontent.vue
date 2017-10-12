@@ -5,7 +5,15 @@
 </template>
 <script>
     export default {
-        
+        props: ['currentContent'],
+        created: function(){
+            console.log(this.currentMenu+'menucontent');
+        },
+        watch: {
+            currentContent: function(){
+                console.log(this.currentContent+'menucontent');
+            }
+        },
         methods: {
             handleStart() {}
         }

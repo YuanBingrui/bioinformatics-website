@@ -2,7 +2,7 @@
   "data": [
     {
       "name": "home", 
-      "title": "首页",
+      "title": "home",
       "isSubmenu": false
     },
     {
@@ -22,15 +22,18 @@
           "submenuListArr": [
             {
               "name": "menu01-02-01",
-              "title": "Menu01-02-01"
+              "title": "Menu01-02-01",
+              "isSubmenu": false
             },
             {
               "name": "menu01-02-02",
-              "title": "Menu01-02-02"
+              "title": "Menu01-02-02",
+              "isSubmenu": false
             },
             {
               "name": "menu01-02-03",
-              "title": "Menu01-02-03"
+              "title": "Menu01-02-03",
+              "isSubmenu": false
             }
           ]
         },

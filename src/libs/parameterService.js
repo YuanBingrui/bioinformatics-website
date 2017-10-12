@@ -1,4 +1,5 @@
 import util from './util';
+import qs from 'qs';
 
 let parameterService = {};
 
@@ -33,6 +34,26 @@ parameterService.getContentParameter = function() {
 }
 
 parameterService.getLinkParameter = function() {
+  let url = '/link-parameter.json';
+  let body = {};
+  return util.post(url, body).then((response) => {
+    return response.data;
+  }).catch(() => {
+    console.log('reject');
+  });
+}
+
+parameterService.getTreeMenu = function(currentmenu) {
+  let url = '/getTreeMenu.php';
+  let body = qs.stringify({currentmenu: currentmenu});
+  return util.post(url, body).then((response) => {
+    return response.data;
+  }).catch(() => {
+    console.log('reject');
+  });
+}
+
+parameterService.getMenuContent = function() {
   let url = '/link-parameter.json';
   let body = {};
   return util.post(url, body).then((response) => {

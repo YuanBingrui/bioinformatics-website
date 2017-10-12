@@ -19,6 +19,7 @@
     "axios": "^0.15.3",
     "element-ui": "^1.4.6",
     "iview": "^2.0.0-rc.13",
+    "qs": "^6.5.1",
     "vue": "^2.2.6"
   },
   "devDependencies": {

@@ -26,8 +26,6 @@
 </template>
 <script>
     import parameterService from '../libs/parameterService';
-    import Content from './content';
-    import SecondaryPage from './secondarypage';
     export default {
     	data () {
     		return {
@@ -45,12 +43,12 @@
         },
         methods: {
         	selectedMenu() {
-                if(event.target.innerText === '首页'){
-                    this.$emit('update:currentView', Content);
-                }else{
-                    this.$emit('update:currentView', SecondaryPage);
-                }
-                //this.$emit('update:currentView', SecondaryPage);
+                // if(event.target.innerText === '首页'){
+                //     this.$emit('update:currentView', Content);
+                // }else{
+                //     this.$emit('update:currentView', SecondaryPage);
+                // }
+                this.$emit('showdata',event.target.innerText);
         		//console.log(event.target.innerText);
         	}
         }

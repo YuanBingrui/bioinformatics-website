@@ -1,34 +1,59 @@
 <template>
-    <div class="content">
-        <div class="contentLeft">
-            <Carousel autoplay v-model="index">
-                <CarouselItem v-for=" oneImg in slideImgArr" :key="oneImg.name">
-                    <img :src="oneImg.src">
-                </CarouselItem>
-            </Carousel>
+    <div>
+        <div class="content-home" v-if="currentMenu === 'home'">
+            <div class="contentLeft-home">
+                <Carousel autoplay v-model="index">
+                    <CarouselItem v-for=" oneImg in slideImgArr" :key="oneImg.name">
+                        <img :src="oneImg.src">
+                    </CarouselItem>
+                </Carousel>
+            </div>
+            <div class="contentRight-home">
+                <Card class="cardBox-home">
+                    <p slot="title">
+                        <Icon type="ios-bookmarks"></Icon>
+                        {{newsTitle}}
+                    </p>
+                    <a href="#" slot="extra">
+                        {{newsBtn}}
+                        <Icon type="ios-arrow-right"></Icon>
+                    </a>
+                    <ul>
+                        <li v-for="item in list">
+                            <a :href="item.href">{{ item.name }}</a>
+                        </li>
+                    </ul>
+                </Card>
+            </div>
         </div>
-        <div class="contentRight">
-            <Card class="cardBox">
-                <p slot="title">
-                <Icon type="ios-bookmarks"></Icon>
-                {{newsTitle}}
-                </p>
-                <a href="#" slot="extra">
-                {{newsBtn}}
-                <Icon type="ios-arrow-right"></Icon>
-                </a>
-                <ul>
-                    <li v-for="item in list">
-                        <a :href="item.href">{{ item.name }}</a>
-                    </li>
-                </ul>
-            </Card>
+        <div class="content" v-if="currentMenu !=='home'">
+            <div class="breadcrumbBox">
+                <Breadcrumb>
+                    <BreadcrumbItem>Home</BreadcrumbItem>
+                    <BreadcrumbItem>Breadcrumb</BreadcrumbItem>
+                </Breadcrumb>
+            </div>
+            <div class="contentBox">
+                <div class="contentLeft">
+                    <treeMenu-component :currentMenu="currentMenu"></treeMenu-component>
+                </div>
+                <div class="contentRight">
+                    <menuContent-component :currentContent="currentMenu"></menuContent-component>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 <script>
     import parameterService from '../libs/parameterService';
+    import TreeMenu from './treemenu';
+    import MenuContent from './menucontent';
     export default {
+        components: {
+            'treeMenu-component': TreeMenu,
+            'menuContent-component': MenuContent
+        },
+        props: ['currentMenu'],
         data() {
             return {
                 value1: '1',
@@ -48,13 +73,20 @@
                 console.log(error);
             });
         },
+        watch: {
+            currentMenu: function(){
+                console.log(this.currentMenu);
+            }
+        },
         methods: {
-            handleStart() {}
+            handleStart() {
+                console.log(this.currentMenu);
+            }
         }
     };
 </script>
 <style scoped>
-    .content{
+    .content-home{
         margin: 2% 2%;
         padding-bottom: 2%;
         display: flex;
@@ -62,23 +94,46 @@
         align-items: center;
         border-bottom: 1px #ccc solid;
     }
-    .contentLeft{
+    .contentLeft-home{
         width: 65%;
         padding: 0 4%;
     }
-    .contentLeft img{
+    .contentLeft-home img{
         border-radius: 4px;
         width: 100%;
         height: 400px;
     }
-    .contentRight{
+    .contentRight-home{
         width: 30%;
         height: 400px;
     }
-    .cardBox{
+    .cardBox-home{
         height: 400px;
     }
-    ul li{
+    .content-home ul li{
         padding: 5px 0;
+    }
+    .content{
+        margin: 2% 2%;
+        padding-bottom: 2%;
+        border-bottom: 1px #ccc solid;
+    }
+    .breadcrumbBox{
+        padding-left: 1%;
+    }
+    .contentBox{
+        display: flex;
+        flex-direction: row;
+        min-height: 800px;
+    }
+    .contentLeft{
+        width: 200px;
+        border-right: 1px #ccc solid;
+        min-height: 800px;
+        background-color: #eef1f6;
+    }
+    .contentRight{
+        width: 75%;
+        margin-left: 3%;
     }
 </style>

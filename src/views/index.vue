@@ -1,10 +1,8 @@
 <template>
     <div class="container">
         <header-component></header-component> 
-        <navMenu-component :currentView.sync="currentView"></navMenu-component>
-        <keep-alive>
-            <component :is="currentView"></component>
-        </keep-alive>
+        <navMenu-component @showdata="showdata"></navMenu-component>
+        <content-component :currentMenu="currentView"></content-component>
         <link-component></link-component>
         <footer-component></footer-component>
     </div>
@@ -13,24 +11,25 @@
     import Header from './header';
     import NavMenu from './navMenu';
     import Content from './content';
-    import SecondaryPage from './secondarypage';
     import Link from './link';
     import Footer from './footer';
     export default {
         data () {
             return {
-                currentView: Content
+                currentView: 'home'
             }
         },
         components: {
             'header-component': Header,
             'navMenu-component': NavMenu,
+            'content-component': Content,
             'link-component': Link,
             'footer-component': Footer
         },
         methods: {
-            handleStart() {
-
+            showdata(data) {
+                this.currentView = data;
+                //console.log(data+'index');
             }
         }
     };

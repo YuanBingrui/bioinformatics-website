@@ -12,8 +12,10 @@
 	Vue.component('tree-menu', {
   		template: '<div><el-menu-item :index="onemenu.index" v-if="!onemenu.children">{{onemenu.title}}</el-menu-item><el-submenu :index="onemenu.index" v-if="onemenu.children"><template slot="title">{{onemenu.title}}</template><tree-menu v-for="onemenu in onemenu.children" :onemenu="onemenu" :key="onemenu.index"></tree-menu></el-submenu></div>',
   		props: ['onemenu']
-	})
-    export default {  	
+	});
+    import parameterService from '../libs/parameterService';
+    export default {
+        props: ['currentMenu'],
         data () {
             return {
                 baseData: [{
@@ -64,7 +66,24 @@
                 }]
             }
         },
+        created: function(){
+            this.getMenuList(this.currentMenu);
+            //console.log(this.currentMenu+'tree');
+        },
+        watch: {
+            currentMenu: function(){
+                this.getMenuList(this.currentMenu);
+                //console.log(this.currentMenu+'tree');
+            }
+        },
         methods: {
+            getMenuList(currentmenu) {
+                parameterService.getTreeMenu(currentmenu).then((data) => {
+                    console.log(data);
+                }).catch((error) => {
+                    console.log(error);
+                });
+            },
       		handleOpen(key, keyPath) {
         		console.log(key, keyPath);
       		},
