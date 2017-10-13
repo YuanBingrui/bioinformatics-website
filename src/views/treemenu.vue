@@ -1,6 +1,6 @@
 <template>
     <div class="treemenuBox">
-    	 <el-menu default-active="1" @select="handleOpen" theme="light">
+    	 <el-menu :default-active="currentMenu" @select="handleOpen" theme="light">
     	 	<div v-for="onemenu in baseData">
     	 		<tree-menu :onemenu="onemenu" :key="onemenu.index"></tree-menu>	
     	 	</div>
@@ -10,7 +10,7 @@
 <script>
 	import Vue from 'vue';
 	Vue.component('tree-menu', {
-  		template: '<div><el-menu-item :index="onemenu.index" v-if="!onemenu.children">{{onemenu.title}}</el-menu-item><el-submenu :index="onemenu.index" v-if="onemenu.children"><template slot="title">{{onemenu.title}}</template><tree-menu v-for="onemenu in onemenu.children" :onemenu="onemenu" :key="onemenu.index"></tree-menu></el-submenu></div>',
+  		template: '<div><el-menu-item :index="onemenu.index" v-if="!onemenu.isSubmenu">{{onemenu.title}}</el-menu-item><el-submenu :index="onemenu.index" v-if="onemenu.isSubmenu"><template slot="title">{{onemenu.title}}</template><tree-menu v-for="onemenu in onemenu.submenuListArr" :onemenu="onemenu" :key="onemenu.index"></tree-menu></el-submenu></div>',
   		props: ['onemenu']
 	});
     import parameterService from '../libs/parameterService';
@@ -18,68 +18,24 @@
         props: ['currentMenu'],
         data () {
             return {
-                baseData: [{
-                    index: '1',
-                    title: 'menu01',
-                    children: [{
-                    	index: '1-01',
-                        title: 'menu01-01',
-                        children: [{
-                        	index: '1-01-01',
-                            title: 'menu01-01-01'
-                        }, {
-                        	index: '1-01-02',
-                            title: 'menu01-01-02',
-                            children: [{
-                        		index: '1-01-02-01',
-                            	title: 'menu01-01-02-01'
-                        	},
-                        	{
-                        		index: '1-01-02-02',
-                            	title: 'menu01-01-02-02'
-                        	}]
-                        }]
-                    }, {
-                    	index: '1-02',
-                        title: 'menu01-02',
-                        children: [{
-                        	index: '1-02-01',
-                            title: 'menu01-02-01'
-                        },
-                        {
-                        	index: '1-02-02',
-                            title: 'menu01-02-02'
-                        }]
-                    }]
-                },
-                {	
-                	index: '2',
-                	title: 'menu02'
-                },
-                {
-                	index: '3',
-                	title: 'menu03'
-                },
-                {
-                	index: '4',
-                	title: 'menu04'
-                }]
+            	baseData: []
             }
         },
         created: function(){
             this.getMenuList(this.currentMenu);
-            //console.log(this.currentMenu+'tree');
+            console.log(this.currentMenu+'tree');
         },
         watch: {
             currentMenu: function(){
                 this.getMenuList(this.currentMenu);
-                //console.log(this.currentMenu+'tree');
+                console.log(this.currentMenu+'tree');
             }
         },
         methods: {
             getMenuList(currentmenu) {
                 parameterService.getTreeMenu(currentmenu).then((data) => {
-                    console.log(data);
+                    this.baseData = data;
+                    console.log(this.baseData);
                 }).catch((error) => {
                     console.log(error);
                 });

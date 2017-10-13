@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="content-home" v-if="currentMenu === 'home'">
+        <div class="content-home" v-if="currentMenu === '0'">
             <div class="contentLeft-home">
                 <Carousel autoplay v-model="index">
                     <CarouselItem v-for=" oneImg in slideImgArr" :key="oneImg.name">
@@ -26,20 +26,12 @@
                 </Card>
             </div>
         </div>
-        <div class="content" v-if="currentMenu !=='home'">
-            <div class="breadcrumbBox">
-                <Breadcrumb>
-                    <BreadcrumbItem>Home</BreadcrumbItem>
-                    <BreadcrumbItem>Breadcrumb</BreadcrumbItem>
-                </Breadcrumb>
+        <div class="content" v-if="currentMenu !=='0'">
+            <div class="contentLeft">
+                <treeMenu-component :currentMenu="currentMenu"></treeMenu-component>
             </div>
-            <div class="contentBox">
-                <div class="contentLeft">
-                    <treeMenu-component :currentMenu="currentMenu"></treeMenu-component>
-                </div>
-                <div class="contentRight">
-                    <menuContent-component :currentContent="currentMenu"></menuContent-component>
-                </div>
+            <div class="contentRight">
+                <menuContent-component :currentContent="currentMenu"></menuContent-component>
             </div>
         </div>
     </div>
@@ -117,11 +109,6 @@
         margin: 2% 2%;
         padding-bottom: 2%;
         border-bottom: 1px #ccc solid;
-    }
-    .breadcrumbBox{
-        padding-left: 1%;
-    }
-    .contentBox{
         display: flex;
         flex-direction: row;
         min-height: 800px;

@@ -1,19 +1,21 @@
 {
-  "data": [
+	"data": [
     {
       "index": "0", 
       "title": "home",
-      "isSubmenu": false
+      "isSubmenu": false,
+      "submenuListArr": []
     },
     {
-      "index": "1", 
-      "title": "Menu01", 
-      "isSubmenu": true,
+      "index": "1",
+      "title": "Menu01",
+      "isSubmenu": true, 
       "submenuListArr": [
         {
           "index": "1-01",
           "title": "Menu01-01",
-          "isSubmenu": false
+          "isSubmenu": false,
+          "submenuListArr": []
         },
         {
           "index": "1-02",
@@ -23,46 +25,54 @@
             {
               "index": "1-02-01",
               "title": "Menu01-02-01",
-              "isSubmenu": false
+              "isSubmenu": false,
+              "submenuListArr": []
             },
             {
               "index": "1-02-02",
               "title": "Menu01-02-02",
-              "isSubmenu": false
+              "isSubmenu": false,
+              "submenuListArr": []
             },
             {
               "index": "1-02-03",
               "title": "Menu01-02-03",
-              "isSubmenu": false
+              "isSubmenu": false,
+              "submenuListArr": []
             }
           ]
         },
         {
           "index": "1-03",
           "title": "Menu01-03",
-          "isSubmenu": false
+          "isSubmenu": false,
+          "submenuListArr": []
         },
         {
           "index": "1-04",
           "title": "Menu01-04",
-          "isSubmenu": false
+          "isSubmenu": false,
+          "submenuListArr": []
         },
         {
           "index": "1-05",
           "title": "Menu01-05",
-          "isSubmenu": false
+          "isSubmenu": false,
+          "submenuListArr": []
         }
       ]
     },
     {
     "index": "2",
     "title": "Menu02",
-    "isSubmenu": false
+    "isSubmenu": false,
+    "submenuListArr": []
     },
     {
       "index": "3",
       "title": "Menu03",
-      "isSubmenu": false
+      "isSubmenu": false,
+      "submenuListArr": []
     },
     {
       "index": "4",
@@ -72,24 +82,28 @@
         {
           "index": "4-01",
           "title": "Menu04-01",
-          "isSubmenu": false
+          "isSubmenu": false,
+          "submenuListArr": []
         },
         {
           "index": "4-02",
           "title": "Menu04-02",
-          "isSubmenu": false
+          "isSubmenu": false,
+          "submenuListArr": []
         },
         {
           "index": "4-03",
           "title": "Menu04-03",
-          "isSubmenu": false
+          "isSubmenu": false,
+          "submenuListArr": []
         }
       ]
     },
     {
       "index": "5",
       "title": "Menu05",
-      "isSubmenu": false
+      "isSubmenu": false,
+      "submenuListArr": []
     },
     {
       "index": "6",
@@ -99,7 +113,8 @@
         {
           "index": "6-01",
           "title": "Menu06-01",
-          "isSubmenu": false
+          "isSubmenu": false,
+          "submenuListArr": []
         },
         {
           "index": "6-02",
@@ -107,33 +122,38 @@
           "isSubmenu": true,
           "submenuListArr": [
             {
-              "index": "6-01",
-              "title": "Menu06-01",
-              "isSubmenu": false
+              "index": "6-02-01",
+              "title": "Menu06-02-01",
+              "isSubmenu": false,
+              "submenuListArr": []
             },
             {
-              "index": "6-01",
-              "title": "Menu06-01",
-              "isSubmenu": false
+              "index": "6-02-02",
+              "title": "Menu06-02-02",
+              "isSubmenu": false,
+              "submenuListArr": []
             },
             {
-              "index": "6-01",
-              "title": "Menu06-01",
-              "isSubmenu": false
+              "index": "6-02-03",
+              "title": "Menu06-02-03",
+              "isSubmenu": false,
+              "submenuListArr": []
             }
           ]
         },
         {
           "index": "6-03",
           "title": "Menu06-03",
-          "isSubmenu": false
+          "isSubmenu": false,
+          "submenuListArr": []
         }
       ]
     },
     {
       "index": "7",
       "title": "Menu07",
-      "isSubmenu": false
+      "isSubmenu": false,
+      "submenuListArr": []
     }
   ]
 }

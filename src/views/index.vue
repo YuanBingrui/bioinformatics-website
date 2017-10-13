@@ -16,7 +16,7 @@
     export default {
         data () {
             return {
-                currentView: 'home'
+                currentView: '0'
             }
         },
         components: {
@@ -29,7 +29,7 @@
         methods: {
             showdata(data) {
                 this.currentView = data;
-                //console.log(data+'index');
+                //console.log(data.length);
             }
         }
     };
