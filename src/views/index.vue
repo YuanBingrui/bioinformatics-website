@@ -2,7 +2,7 @@
     <div class="container">
         <header-component></header-component> 
         <navMenu-component @showdata="showdata"></navMenu-component>
-        <content-component :currentMenu="currentView"></content-component>
+        <content-component :current-menu="currentView"></content-component>
         <link-component></link-component>
         <footer-component></footer-component>
     </div>
@@ -29,7 +29,7 @@
         methods: {
             showdata(data) {
                 this.currentView = data;
-                //console.log(data.length);
+                console.log(data);
             }
         }
     };

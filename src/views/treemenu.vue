@@ -1,6 +1,6 @@
 <template>
     <div class="treemenuBox">
-    	 <el-menu :default-active="currentMenu" @select="handleOpen" theme="light">
+    	 <el-menu :default-active="currentMenu" @select="selectedMenu" theme="light">
     	 	<div v-for="onemenu in baseData">
     	 		<tree-menu :onemenu="onemenu" :key="onemenu.index"></tree-menu>	
     	 	</div>
@@ -23,28 +23,27 @@
         },
         created: function(){
             this.getMenuList(this.currentMenu);
-            console.log(this.currentMenu+'tree');
+            //console.log(this.currentMenu+'tree');
         },
         watch: {
             currentMenu: function(){
                 this.getMenuList(this.currentMenu);
-                console.log(this.currentMenu+'tree');
+                //console.log(this.currentMenu+'tree');
             }
         },
         methods: {
             getMenuList(currentmenu) {
                 parameterService.getTreeMenu(currentmenu).then((data) => {
                     this.baseData = data;
-                    console.log(this.baseData);
+                    //console.log(this.baseData);
                 }).catch((error) => {
-                    console.log(error);
+                    this.$Modal.error({
+                        content: error
+                    });
                 });
             },
-      		handleOpen(key, keyPath) {
-        		console.log(key, keyPath);
-      		},
-      		handleClose(key, keyPath) {
-        		console.log(key, keyPath);
+      		selectedMenu(key) {
+                this.$emit('selectedkey',key);
       		}
         }
     };

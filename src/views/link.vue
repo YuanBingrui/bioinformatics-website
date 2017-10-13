@@ -27,10 +27,12 @@
         },
         created: function(){
             parameterService.getLinkParameter().then((data) => {
-                console.log(data);
+                //console.log(data);
                 this.linkImgArr = data.linkImgArr;
             }).catch((error) => {
-                console.log(error);
+                this.$Modal.error({
+                    content: error
+                });
             });
         },
         methods: {

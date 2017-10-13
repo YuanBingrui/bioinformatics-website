@@ -23,12 +23,14 @@
         },
         created: function(){
             parameterService.getHeaderParameter().then((data) => {
-                console.log(data);
+                //console.log(data);
                 this.href = data.href;
                 this.logoUrl = data.logoUrl;
                 this.introWord = data.introWord;
             }).catch((error) => {
-                console.log(error);
+                this.$Modal.error({
+                    content: error
+                });
             });
         },
         methods: {

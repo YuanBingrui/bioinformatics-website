@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="content-home" v-if="currentMenu === '0'">
+        <div class="content-home" v-if="currentmenuu === '0'">
             <div class="contentLeft-home">
                 <Carousel autoplay v-model="index">
                     <CarouselItem v-for=" oneImg in slideImgArr" :key="oneImg.name">
@@ -26,12 +26,12 @@
                 </Card>
             </div>
         </div>
-        <div class="content" v-if="currentMenu !=='0'">
+        <div class="content" v-if="currentmenuu !=='0'">
             <div class="contentLeft">
-                <treeMenu-component :currentMenu="currentMenu"></treeMenu-component>
+                <treeMenu-component @selectedkey="selectedkey" :current-menu="currentmenuu"></treeMenu-component>
             </div>
             <div class="contentRight">
-                <menuContent-component :currentContent="currentMenu"></menuContent-component>
+                <menuContent-component :current-content="currentmenuu"></menuContent-component>
             </div>
         </div>
     </div>
@@ -53,26 +53,34 @@
                 list: [],
                 slideImgArr:[],
                 newsTitle: '新闻播报',
-                newsBtn: '更多'
+                newsBtn: '更多',
+                currentmenuu: ''
             }
         },
         created: function(){
             parameterService.getContentParameter().then((data) => {
-                console.log(data);
+                //console.log(data);
                 this.list = data.list;
                 this.slideImgArr = data.slideImgArr;
             }).catch((error) => {
-                console.log(error);
+                this.$Modal.error({
+                    content: error
+                });
             });
+            this.setCurrentMenu();
         },
         watch: {
             currentMenu: function(){
-                console.log(this.currentMenu);
+                this.setCurrentMenu();
             }
         },
         methods: {
-            handleStart() {
-                console.log(this.currentMenu);
+            selectedkey(data) {
+                this.currentmenuu = data;
+                //console.log(this.currentmenuu);
+            },
+            setCurrentMenu() {
+                this.currentmenuu = this.currentMenu;
             }
         }
     };

@@ -1,10 +1,10 @@
 <template>
     <div class="navMenuBox">
         <Dropdown type="primary" class="dropDown" v-for="menuItem in menuListArr" :key="menuItem.index" @on-click="onclickMenu">
-            <Button type="primary" @click="clickMenu" :id="menuItem.index">
+            <span class="ivu-btn ivu-btn-primary" @click="clickMenu" :id="menuItem.index">
                 {{menuItem.title}}
                 <Icon type="ios-arrow-down" v-if="menuItem.isSubmenu"></Icon>
-            </Button>
+            </span>
             <DropdownMenu slot="list" v-if="menuItem.isSubmenu">
                 <div v-for="submenuItem in menuItem.submenuListArr" :key="submenuItem.index">
                     <DropdownItem :name="submenuItem.index" v-if="!submenuItem.isSubmenu">{{submenuItem.title}}</DropdownItem>
@@ -39,17 +39,17 @@
             }).catch((error) => {
                 this.$Modal.error({
                     content: error
-                });
+                }); 
             });
         },
         methods: {
         	onclickMenu(name) {
                 this.$emit('showdata',name);
-        		console.log(name+'on');
+        		//console.log(name+'on');
         	},
             clickMenu() {
                 this.$emit('showdata',event.target.id);
-                console.log(event);
+                //console.log(event);
             }
         }
     };
@@ -65,5 +65,8 @@
     .dropDown{
         margin-left: 2%;
         margin-bottom: 1%;
+    }
+    .btnspan{
+        padding: 2%;
     }
 </style>
