@@ -12,12 +12,10 @@
         },
         created: function(){
             this.getMenuContent(this.currentContent);
-            console.log(this.currentContent+'menucontent');
         },
         watch: {
             currentContent: function(){
                 this.getMenuContent(this.currentContent);
-                console.log(this.currentContent+'menucontent');
             }
         },
         methods: {

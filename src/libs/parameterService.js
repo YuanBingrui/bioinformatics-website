@@ -4,7 +4,7 @@ import qs from 'qs';
 let parameterService = {};
 
 parameterService.getHeaderParameter = function() {
-  let url = '/herder-parameter.json';
+  let url = 'json/herder-parameter.json';
   let body = {};
   return util.post(url, body).then((response) => {
     return response.data;
@@ -14,7 +14,7 @@ parameterService.getHeaderParameter = function() {
 }
 
 parameterService.getMenuParameter = function() {
-  let url = '/menu-parameter.json';
+  let url = 'json/menu-parameter.json';
   let body = {};
   return util.post(url, body).then((response) => {
     return response.data;
@@ -24,7 +24,7 @@ parameterService.getMenuParameter = function() {
 }
 
 parameterService.getContentParameter = function() {
-  let url = '/content-parameter.json';
+  let url = 'json/content-parameter.json';
   let body = {};
   return util.post(url, body).then((response) => {
     return response.data;
@@ -34,7 +34,7 @@ parameterService.getContentParameter = function() {
 }
 
 parameterService.getLinkParameter = function() {
-  let url = '/link-parameter.json';
+  let url = 'json/link-parameter.json';
   let body = {};
   return util.post(url, body).then((response) => {
     return response.data;
@@ -44,7 +44,7 @@ parameterService.getLinkParameter = function() {
 }
 
 parameterService.getTreeMenu = function(currentmenu) {
-  let url = '/getTreeMenu.php';
+  let url = 'getTreeMenu.php';
   let body = qs.stringify({currentmenu: currentmenu});
   return util.post(url, body).then((response) => {
     return response.data;
@@ -54,7 +54,7 @@ parameterService.getTreeMenu = function(currentmenu) {
 }
 
 parameterService.getMenuContentUrl = function(currentmenu) {
-  let url = '/getMenuContent.php';
+  let url = 'getMenuContent.php';
   let body = qs.stringify({currentmenu: currentmenu});
   return util.post(url, body).then((response) => {
     return response.data;
