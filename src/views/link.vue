@@ -27,7 +27,6 @@
         },
         created: function(){
             parameterService.getLinkParameter().then((data) => {
-                //console.log(data);
                 this.linkImgArr = data.linkImgArr;
             }).catch((error) => {
                 this.$Modal.error({

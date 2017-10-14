@@ -23,8 +23,6 @@
         },
         created: function(){
             parameterService.getHeaderParameter().then((data) => {
-                //console.log(data);
-                this.href = data.href;
                 this.logoUrl = data.logoUrl;
                 this.introWord = data.introWord;
             }).catch((error) => {

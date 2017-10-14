@@ -10,7 +10,7 @@
 <script>
 	import Vue from 'vue';
 	Vue.component('tree-menu', {
-  		template: '<div><el-menu-item :index="onemenu.index" v-if="!onemenu.isSubmenu">{{onemenu.title}}</el-menu-item><el-submenu :index="onemenu.index" v-if="onemenu.isSubmenu"><template slot="title">{{onemenu.title}}</template><tree-menu v-for="onemenu in onemenu.submenuListArr" :onemenu="onemenu" :key="onemenu.index"></tree-menu></el-submenu></div>',
+  		template: '<div><div v-if="!onemenu.isSubmenu"><a v-if="onemenu.isExternallink" :href="onemenu.url" target="_blank"><el-menu-item :index="onemenu.linkIndex">{{onemenu.title}}</el-menu-item></a><el-menu-item v-else="!onemenu.isExternallink" :index="onemenu.index">{{onemenu.title}}</el-menu-item></div><el-submenu :index="onemenu.index" v-if="onemenu.isSubmenu"><template slot="title">{{onemenu.title}}</template><tree-menu v-for="onemenu in onemenu.submenuListArr" :onemenu="onemenu" :key="onemenu.index"></tree-menu></el-submenu></div>',
   		props: ['onemenu']
 	});
     import parameterService from '../libs/parameterService';
@@ -23,19 +23,16 @@
         },
         created: function(){
             this.getMenuList(this.currentMenu);
-            //console.log(this.currentMenu+'tree');
         },
         watch: {
             currentMenu: function(){
                 this.getMenuList(this.currentMenu);
-                //console.log(this.currentMenu+'tree');
             }
         },
         methods: {
             getMenuList(currentmenu) {
                 parameterService.getTreeMenu(currentmenu).then((data) => {
                     this.baseData = data;
-                    //console.log(this.baseData);
                 }).catch((error) => {
                     this.$Modal.error({
                         content: error
@@ -43,7 +40,10 @@
                 });
             },
       		selectedMenu(key) {
-                this.$emit('selectedkey',key);
+                if(key.indexOf('Y') === 0){
+                    this.$emit('selectedkey',key);
+                }
+                
       		}
         }
     };

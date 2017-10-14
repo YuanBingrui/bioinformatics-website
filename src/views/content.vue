@@ -59,7 +59,6 @@
         },
         created: function(){
             parameterService.getContentParameter().then((data) => {
-                //console.log(data);
                 this.list = data.list;
                 this.slideImgArr = data.slideImgArr;
             }).catch((error) => {
@@ -77,7 +76,6 @@
         methods: {
             selectedkey(data) {
                 this.currentmenuu = data;
-                //console.log(this.currentmenuu);
             },
             setCurrentMenu() {
                 this.currentmenuu = this.currentMenu;
