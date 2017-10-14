@@ -5,15 +5,15 @@ let util = {
 
 };
 util.title = function(title) {
-    title = title ? title + ' - Home' : 'iView project';
+    title = title ? title + ' - Home' : 'bioinformatics';
     window.document.title = title;
 };
 
 const ajaxUrl = env === 'development' ?
     'http://127.0.0.1:80/bioinformatics/' :
     env === 'production' ?
-    'http://127.0.0.1:80/vueDatabase' :
-    'http://127.0.0.1:80/vueDatabase';
+    '' :
+    '';
 
 util.ajax = axios.create({
     baseURL: ajaxUrl,
